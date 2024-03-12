@@ -30,7 +30,7 @@ $data = mysqli_fetch_array($sql);
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Administrator | Aplikasi Absensi</title>
+	<title>Administrator | Website Fit&Fun</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
 
@@ -61,7 +61,7 @@ $data = mysqli_fetch_array($sql);
 				
 				<a href="dashboard.php" class="logo">
 					<!-- <img src="../assets/img/mts.png" alt="navbar brand" class="navbar-brand" width="40"> -->
-					<b class="text-white">MTs NEGERI PATI</b>
+					<b class="text-white">Fit&Fun</b>
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">

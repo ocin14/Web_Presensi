@@ -9,7 +9,7 @@ include '../config/db.php';
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="../assets/img/logo1.png"/>
+	<link rel="icon" type="image/png" href="../assets/img/logoff.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../assets/_login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -39,10 +39,10 @@ include '../config/db.php';
 				<form method="post" action="" class="login100-form validate-form">
 					<span class="login100-form-title p-b-48">
 						<!-- <i class="zmdi zmdi-font"></i> -->
-						<img src="../assets/img/logo1.png" width="100">
+						<img src="../assets/img/logotagline.png" width="100">
 					</span>
 					<span class="login100-form-title p-b-26">
-						MTs NEGERI PATI
+						FIT&FUN
 					</span>
 					
 

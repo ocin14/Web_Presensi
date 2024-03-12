@@ -1,16 +1,13 @@
 <?php 
 // tampilkan data mengajar
 $kelasMengajar = mysqli_query($con,"SELECT * FROM tb_mengajar 
-
 INNER JOIN tb_master_mapel ON tb_mengajar.id_mapel=tb_master_mapel.id_mapel
 INNER JOIN tb_mkelas ON tb_mengajar.id_mkelas=tb_mkelas.id_mkelas
 INNER JOIN tb_guru ON tb_mengajar.id_guru=tb_guru.id_guru
-
 INNER JOIN tb_semester ON tb_mengajar.id_semester=tb_semester.id_semester
 INNER JOIN tb_thajaran ON tb_mengajar.id_thajaran=tb_thajaran.id_thajaran
 WHERE tb_mengajar.id_mkelas='$_GET[kelas]' AND tb_thajaran.status=1 AND tb_semester.id_semester=1 ");
 
-foreach ($kelasMengajar as $d) 
 
 	?>
 
@@ -36,8 +33,10 @@ foreach ($kelasMengajar as $d)
 <i class="flaticon-right-arrow"></i>
 </li>
 <li class="nav-item">
-<a href="#">KELAS (<?=strtoupper($d['nama_kelas']) ?> )</a>
+    <a href="#">KELAS (<?= isset($d['nama_kelas']) ? strtoupper($d['nama_kelas']) : 'Nama Kelas Tidak Tersedia' ?>)</a>
 </li>
+
+
 
 </ul>
 </div>
@@ -72,7 +71,7 @@ foreach ($kelasMengajar as $d)
 													<code><?=$mp['nama_guru']; ?></code>
 												</td>
 												<td>
-												<a href="?page=rekap&act=rekap-perbulan&pelajaran=<?=$mp[id_mengajar] ?>&kelas=<?=$_GET[kelas] ?>" class="btn btn-default">
+												<a href="?page=rekap&act=rekap-perbulan&pelajaran=<?= isset($mp['id_mengajar']) ? $mp['id_mengajar'] : 'default_value' ?>&kelas=<?= isset($_GET['kelas']) ? $_GET['kelas'] : 'default_value' ?>" class="btn btn-default">
 												<span class="btn-label">
 												<i class="fas fa-clipboard"></i>
 												</span>
