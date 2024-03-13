@@ -209,9 +209,9 @@ $data = mysqli_fetch_array($sql);
 
 				if ($page=='absen') {
 					if ($act=='') {
-						include 'modul/absen/absen_kelas.php';
+						include '../guru/modul/absen/absen_kelas.php';
 					}elseif ($act=='update') {
-						include 'modul/absen/absen_kelas_update.php';
+						include '../guru/modul/absen/absen_kelas_update.php';
 					}					
 									
 				}elseif ($page=='akun') {

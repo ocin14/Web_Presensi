@@ -2,7 +2,7 @@
 					<div class="page-inner py-5">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white pb-2 fw-bold">Aplikasi Presensi</h2>
+								<h2 class="text-white pb-2 fw-bold">Fit&Fun Website</h2>
 								<h5 class="text-white op-7 mb-2">Selamat Datang, <b class="text-warning"><?=$data['nama_guru']; ?></b></h5>
 							</div>
 							<!-- <div class="ml-md-auto py-2 py-md-0">
@@ -19,9 +19,9 @@
 								<div class="card-body">
 									<div class="card-title">
 										<center>
-											<img src="../assets/img/logo1.png" width="100">
+											<img src="../assets/img/logotagline.png" width="50%">
 											<br>
-											<b>MTs NEGERI PATI</b>
+											<b>Fit&Fun</b>
 										</center>
 									</div>
 									<div class="card-category">
