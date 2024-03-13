@@ -19,7 +19,7 @@
 								<div class="card-body">
 										<div class="card-title">
 										<center>
-											<img src="../assets/img/logoff.png" width="50%">
+											<img src="../assets/img/logotagline.png" width="50%">
 											<br>
 											<b>Fit & Fun</b>
 										</center>

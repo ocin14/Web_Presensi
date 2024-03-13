@@ -3,7 +3,7 @@
 								<div class="card-header" style="background-image: url('../assets/img/bguser.jpg')">
 									<div class="profile-picture">
 										<div class="avatar avatar-xl">
-											<img src="../assets/img/user/<?=$data['foto'];?>" alt="..." class="avatar-img rounded-circle">
+											<img src="../assets/img/user/<?=$data['foto'];?>"  class="avatar-img rounded-circle">
 										</div>
 									</div>
 								</div>

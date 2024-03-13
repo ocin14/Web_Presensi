@@ -21,14 +21,17 @@
 
 
 			 foreach ($qry as $bulan) { ?>
+
 			 	<?php 
 			 	$bulan = date('m',strtotime($bulan['tgl_absen']));
-
-
+				include '../form_absen.php';
 			 	 ?>
+			 <?php } ?>
+		</div>
+	</div>
+</div>
 
-
-			 	<div class="col-xl-12">
+<div class="col-xl-12">
 				<div class="card text-left">
 					<div class="card-body">
 						<!-- Senin, 10-01-2019 <b>Hadir</b> -->
@@ -79,26 +82,4 @@
 					</div>
 				</div>
 			</div>
-
-
-
-
-			 <?php } ?>
-
-
-			
-
-
-
-
-
-
-
-
-	
-
-		</div>
-	</div>
-</div>
-
 	<a href="javascript:history.back()" class="btn btn-default btn-block"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
