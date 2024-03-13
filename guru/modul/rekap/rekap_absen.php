@@ -51,7 +51,7 @@ foreach ($kelasMengajar as $d)
 						
 						<div class="col-md-12 col-xs-12 mt-3">	
 
-				<a target="_blank" href="modul/rekap/rekap_persemester.php?pelajaran=<?=$_GET[pelajaran] ?>&kelas=<?=$d['id_mkelas'] ?>" style="text-decoration: none;" class="text-success">
+				<a target="_blank" href="../rekap/rekap_persemester.php?pelajaran=<?php echo $_GET['pelajaran']; ?>&kelas=<?php echo $d['id_mkelas']; ?>" style="text-decoration: none;" class="text-success">
 				<div class="alert alert-success alert-dismissible" role="alert">
 				<strong>REKAP SEMESTER (<?=strtoupper($d['semester']) ?> - <b><?=strtoupper($d['tahun_ajaran']) ?></b>)</strong> 
 				</div>
@@ -66,9 +66,9 @@ foreach ($kelasMengajar as $d)
 										$bulan = date('m');
 
 										 ?>
-										<a href="modul/rekap/rekap_bulan.php?pelajaran=<?=$_GET[pelajaran] ?>&bulan=<?=$bulan;?>" class="btn btn-success btn-block text-left" target="_blank"><i class=" fas fa-file-alt"></i> BULAN SEKARANG</a>	
+										<a href="modul/rekap/rekap_bulan.php?pelajaran=<?=$_GET['pelajaran'] ?>&bulan=<?=$bulan;?>" class="btn btn-success btn-block text-left" target="_blank"><i class=" fas fa-file-alt"></i> BULAN SEKARANG</a>	
 										
-										<a href="modul/rekap/rekap_bulan.php?pelajaran=<?=$_GET[pelajaran] ?>&bulan=<?=$bulan-1;?>" class="btn btn-warning btn-block text-left" target="_blank"><i class=" fas fa-file-alt"></i> BULAN SEBELUMYA</a>	
+										<a href="modul/rekap/rekap_bulan.php?pelajaran=<?=$_GET['pelajaran'] ?>&bulan=<?=$bulan-1;?>" class="btn btn-warning btn-block text-left" target="_blank"><i class=" fas fa-file-alt"></i> BULAN SEBELUMYA</a>	
 										
 									</div> -->
 
@@ -87,7 +87,7 @@ foreach ($kelasMengajar as $d)
 									$bulan = date('m',strtotime($bulan['tgl_absen']));
 									?>
 
-									<a target="_blank" href="modul/rekap/rekap_bulan.php?pelajaran=<?=$_GET[pelajaran] ?>&bulan=<?=$bulan;?>&kelas=<?=$d['id_mkelas'] ?>" style="text-decoration: none;" class="text-primary">
+									<a target="_blank" href="modul/rekap/rekap_bulan.php?pelajaran=<?=$_GET['pelajaran'] ?>&bulan=<?=$bulan;?>&kelas=<?=$d['id_mkelas'] ?>" style="text-decoration: none;" class="text-primary">
 									<div class="alert alert-primary alert-dismissible" role="alert">
 									<strong>REKAP BULAN (<?= strtoupper(namaBulan($bulan)) ?> <?= strtoupper(date('Y')) ?>) </strong> 
 									</div>

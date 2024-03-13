@@ -71,7 +71,7 @@ $walikelas = mysqli_query($con,"SELECT * FROM tb_walikelas INNER JOIN tb_guru ON
 foreach ($walikelas as $walas) 
 
 
-// $tglTerakhir = date('t',strtotime($tglBulan));
+ $tglTerakhir = date('t',strtotime($tglBulan));
 $tglTerakhir = 25;
 
 
