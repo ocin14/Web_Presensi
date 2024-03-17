@@ -3,7 +3,7 @@
 @session_start();
  include '../config/db.php';
 
-if (!isset($_SESSION['siswa'])) {
+if (!isset($_SESSION['guru'])) {
 ?> <script>
     alert('Maaf ! Anda Belum Login !!');
     window.location='../user.php';
@@ -14,10 +14,9 @@ if (!isset($_SESSION['siswa'])) {
 
 
    <?php
-$id_login = @$_SESSION['siswa'];
-$sql = mysqli_query($con,"SELECT * FROM tb_siswa
-	INNER JOIN tb_mkelas ON tb_siswa.id_mkelas=tb_mkelas.id_mkelas
- WHERE tb_siswa.id_siswa = '$id_login'") or die(mysqli_error($con));
+$id_login = @$_SESSION['guru'];
+$sql = mysqli_query($con,"SELECT * FROM tb_guru
+ WHERE id_guru = '$id_login'") or die(mysqli_error($con));
 $data = mysqli_fetch_array($sql);
 
 // tampilkan data mengajar

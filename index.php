@@ -60,7 +60,7 @@ include 'config/db.php';
 						<span class="focus-input100" data-placeholder="Username"></span> -->
                         <select class="form-control" name="level">
                             <option>Level</option>
-                            <option value="2">Member</option>
+                            <option value="1">Member</option>
                             <!-- <option value="2">Siswa</option> -->
                             <option value="1">Coach</option>
                             <!-- <option value="4">Wali Kelas</option> -->

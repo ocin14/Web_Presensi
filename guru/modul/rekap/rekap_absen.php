@@ -51,7 +51,7 @@ foreach ($kelasMengajar as $d)
 						
 						<div class="col-md-12 col-xs-12 mt-3">	
 
-				<a target="_blank" href="../rekap/rekap_persemester.php?pelajaran=<?php echo $_GET['pelajaran']; ?>&kelas=<?php echo $d['id_mkelas']; ?>" style="text-decoration: none;" class="text-success">
+				<a target="_blank" href="../modul/rekap/rekap_persemester.php?pelajaran=<?php echo $_GET['pelajaran']; ?>&kelas=<?php echo $d['id_mkelas']; ?>" style="text-decoration: none;" class="text-success">
 				<div class="alert alert-success alert-dismissible" role="alert">
 				<strong>REKAP SEMESTER (<?=strtoupper($d['semester']) ?> - <b><?=strtoupper($d['tahun_ajaran']) ?></b>)</strong> 
 				</div>
