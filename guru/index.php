@@ -212,11 +212,11 @@ WHERE tb_mengajar.id_guru='$data[id_guru]' AND tb_thajaran.status=1 ");
 							</div>
 						</li>
 							<li class="nav-item">
-							<a data-toggle="collapse" href="#rekapAbsen">
+							<!-- <a data-toggle="collapse" href="#rekapAbsen">
 								<i class="fas fa-list-alt"></i>
 								<p>Rekap Absen</p>
 								<span class="caret"></span>
-							</a>
+							</a> -->
 							<div class="collapse" id="rekapAbsen">
 								<ul class="nav nav-collapse">
 									<?php
