@@ -6,7 +6,7 @@ include 'config/db.php';
 <html lang="en">
 
 <head>
-    <title>Login | Absensi</title>
+    <title>Login | Fit & Fun</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -60,9 +60,9 @@ include 'config/db.php';
 						<span class="focus-input100" data-placeholder="Username"></span> -->
                         <select class="form-control" name="level">
                             <option>Level</option>
-                            <option value="1">Member</option>
+                            <option value="2">Member</option>
                             <!-- <option value="2">Siswa</option> -->
-                            <option value="3">Coach</option>
+                            <option value="1">Coach</option>
                             <!-- <option value="4">Wali Kelas</option> -->
                         </select>
                     </div>
@@ -132,7 +132,7 @@ include 'config/db.php';
 						
 					}elseif ($level==2) {
 						// Siswa
-								$sqlCek = mysqli_query($con,"SELECT * FROM tb_siswa WHERE nis='$_POST[username]' AND password='$pass' AND status='1'");
+								$sqlCek = mysqli_query($con,"SELECT * FROM tb_siswa WHERE nis='$_POST[username]' AND password='$pass' AND status='y'");
 								$jml = mysqli_num_rows($sqlCek);
 								$d = mysqli_fetch_array($sqlCek);
 								

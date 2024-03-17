@@ -1,31 +1,41 @@
+
 <?php
 @session_start();
  include '../config/db.php';
 
-// if (!isset($_SESSION['siswa'])) {
-// ?> <script>
-//     alert('Maaf ! Anda Belum Login !!');
-//     window.location='../user.php';
-//  </script>
-// <?php
-// }
-//  ?>
+if (!isset($_SESSION['siswa'])) {
+?> <script>
+    alert('Maaf ! Anda Belum Login !!');
+    window.location='../user.php';
+ </script>
+<?php
+}
+ ?>
 
 
-   <!-- <?php
-$id_login = @$_SESSION[''];
+   <?php
+$id_login = @$_SESSION['siswa'];
 $sql = mysqli_query($con,"SELECT * FROM tb_siswa
 	INNER JOIN tb_mkelas ON tb_siswa.id_mkelas=tb_mkelas.id_mkelas
  WHERE tb_siswa.id_siswa = '$id_login'") or die(mysqli_error($con));
 $data = mysqli_fetch_array($sql);
 
+// tampilkan data mengajar
+$mengajar = mysqli_query($con,"SELECT * FROM tb_mengajar 
 
-?> -->
+INNER JOIN tb_master_mapel ON tb_mengajar.id_mapel=tb_master_mapel.id_mapel
+INNER JOIN tb_mkelas ON tb_mengajar.id_mkelas=tb_mkelas.id_mkelas
+
+INNER JOIN tb_semester ON tb_mengajar.id_semester=tb_semester.id_semester
+INNER JOIN tb_thajaran ON tb_mengajar.id_thajaran=tb_thajaran.id_thajaran
+WHERE tb_mengajar.id_guru='$data[id_guru]' AND tb_thajaran.status=1 ");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Siswa | Aplikasi Presensi</title>
+	<title>Guru | Aplikasi Presensi</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="../assets/img/icon.ico" type="image/x-icon"/>
 
@@ -56,7 +66,7 @@ $data = mysqli_fetch_array($sql);
 				
 				<a href="index.php" class="logo">
 					<!-- <img src="../assets/img/mts.png" alt="navbar brand" class="navbar-brand" width="40"> -->
-					<b class="text-white">MTs NEGERI PATI</b>
+					<b class="text-white">Fit & Fun</b>
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -109,15 +119,15 @@ $data = mysqli_fetch_array($sql);
 										<div class="user-box">
 											<div class="avatar-lg"><img src="../assets/img/user/<?=$data['foto'] ?>" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4><?=$data['nama_siswa'] ?></h4>
-												<p class="text-muted"><?=$data['nip'] ?></p>
-												<!-- <a href="?page=jadwal" class="btn btn-xs btn-secondary btn-sm">Jadwal Mengajar</a> -->
+												<h4><?=$data['nama_guru'] ?></h4>
+												<p class="text-muted"><?=$data['email'] ?></p>
+												<a href="?page=jadwal" class="btn btn-xs btn-secondary btn-sm">Jadwal Mengajar</a>
 											</div>
 										</div>
 									</li>
 									<li>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="?page=change">Ganti Password</a>
+										<a class="dropdown-item" href="?page=akun" >Akun Saya</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="logout.php">Logout</a>
 									</li>
@@ -141,8 +151,8 @@ $data = mysqli_fetch_array($sql);
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
-									<?=$data['nama_siswa'] ?>
-									<span class="user-level">Kelas <?=$data['nama_kelas'] ?></span>
+									<?=$data['nama_guru'] ?>
+									<span class="user-level"><?=$data['nip'] ?></span>
 									<span class="caret"></span>
 								</span>
 							</a>
@@ -151,8 +161,8 @@ $data = mysqli_fetch_array($sql);
 							<div class="collapse in" id="collapseExample">
 								<ul class="nav">
 									<li>
-										<a href="?page=change">
-											<span class="link-collapse">Ganti Password</span>
+										<a href="?page=akun">
+											<span class="link-collapse">Akun Saya</span>
 										</a>
 									</li>
 									
@@ -173,15 +183,56 @@ $data = mysqli_fetch_array($sql);
 							</span>
 							<h4 class="text-section">Main Utama</h4>
 						</li>
-
 						<li class="nav-item">
-							<a href="?page=kehadiran">
-								<i class="fas fa-clipboard-list"></i>
-								<p>Presensi</p>
+							<a href="?page=jadwal">
+								<i class="fas fa-clipboard-check"></i>
+								<p>Jadwal Mengajar</p>
 							</a>
 						
 						</li>
-	
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#sidebarLayouts">
+								<i class="fas fa-clipboard-list
+"></i>
+								<p>Presensi</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="sidebarLayouts">
+								<ul class="nav nav-collapse">
+									<?php
+
+
+									foreach ($mengajar as $dm) { ?>
+									<li>
+										<a href="?page=absen&pelajaran=<?=$dm['id_mengajar'] ?> ">
+											<span class="sub-item"><!-- <?=strtoupper($dm['mapel']); ?> -->KELAS (<?=strtoupper($dm['nama_kelas']); ?>)</span>
+										</a>
+									</li>
+								<?php } ?>
+								</ul>
+							</div>
+						</li>
+							<li class="nav-item">
+							<a data-toggle="collapse" href="#rekapAbsen">
+								<i class="fas fa-list-alt"></i>
+								<p>Rekap Absen</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="rekapAbsen">
+								<ul class="nav nav-collapse">
+									<?php
+
+
+									foreach ($mengajar as $dm) { ?>
+									<li>
+										<a href="?page=rekap&pelajaran=<?=$dm['id_mengajar'] ?> ">
+											<span class="sub-item"><!-- <?=strtoupper($dm['mapel']); ?> -->KELAS (<?=strtoupper($dm['nama_kelas']); ?>)</span>
+										</a>
+									</li>
+								<?php } ?>
+								</ul>
+							</div>
+						</li>
 						<li class="nav-item active mt-3">
 							<a href="logout.php" class="collapsed">
 								<i class="fas fa-arrow-alt-circle-left"></i>
@@ -208,20 +259,30 @@ $data = mysqli_fetch_array($sql);
 				$page= @$_GET['page'];
 				$act = @$_GET['act'];
 
-				if ($page=='izin') {
+				if ($page=='absen') {
 					if ($act=='') {
-						include 'modul/izin/ajukan_izin.php';
+						include 'modul/absen/absen_kelas.php';
 					}elseif ($act=='surat_view') {
-						include 'modul/izin/view_surat_izin.php';
+						include 'modul/absen/view_surat_izin.php';
+					}elseif ($act=='konfirmasi') {
+						include 'modul/absen/konfirmasi_izin.php';
+					}elseif ($act=='update') {
+						include 'modul/absen/absen_kelas_update.php';
 					}					
-				}elseif ($page=='kehadiran') {
+				}elseif ($page=='rekap') {
 					if ($act=='') {
-						include 'modul/absen/kehadiran.php';
+						include 'modul/rekap/rekap_absen.php';
 
 					}					
-				}elseif ($page=='change') {
-					include 'modul/user/ganti_password.php';
+				}elseif ($page=='jadwal') {
+					if ($act=='') {
+						include 'modul/jadwal/jadwal_megajar.php';
+
+					}					
+				}elseif ($page=='akun') {
+					include 'modul/akun/akun.php';
 				}
+
 				elseif ($page=='') {
 					include 'modul/home.php';
 				}else{
@@ -233,12 +294,14 @@ $data = mysqli_fetch_array($sql);
 
 
 				<!-- end -->
+
+
 				
 			</div>
 		<footer class="footer">
 				<div class="container">
 					<div class="copyright ml-auto">
-						&copy; <?php echo date('Y');?> Absensi Siswa MTs Negeri Pati (<a href="index.php">Abid Taufiqur Rohman </a> | 2021)
+						&copy; <?php echo date('Y');?> Absensi MTs Negeri Pati (<a href="index.php">Abid Taufiqur Rohman </a> | 2021)
 					</div>				
 				</div>
 			</footer>
