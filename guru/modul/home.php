@@ -47,12 +47,12 @@ jl. Winong - Pucakwangi Km 01 Kec. Winong Kab. Pati Kode Pos 59181
 												Absen
 											</a>
 										</li>
-										<!-- <li class="nav-item">
+										<li class="nav-item">
 											<a class="nav-link" id="pills-profile-tab-icon" data-toggle="pill" href="#pills-profile-icon" role="tab" aria-controls="pills-profile-icon" aria-selected="false">
 												<i class="fas fa-list-alt"></i>
 												Rekap
 											</a>
-										</li> -->
+										</li>
 										<li class="nav-item">
 											<a class="nav-link" id="pills-contact-tab-icon" data-toggle="pill" href="#pills-contact-icon" role="tab" aria-controls="pills-contact-icon" aria-selected="false">
 												<i class="fas fa-user-astronaut"></i>

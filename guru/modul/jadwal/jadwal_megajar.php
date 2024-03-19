@@ -52,10 +52,10 @@
 			<i class="fas fa-clipboard-check"></i>
 			Isi Absen
 		</a>
-		<!-- <a href="?page=rekap&pelajaran=<?=$jd['id_mengajar'] ?> " class="btn btn-secondary btn-block text-left">
+		<a href="?page=rekap&pelajaran=<?=$jd['id_mengajar'] ?> " class="btn btn-secondary btn-block text-left">
 			<i class="fas fa-list-alt"></i>
 			Rekap Absen
-		</a> -->
+		</a>
 		</div>	
 </div>
 	<?php } ?>
