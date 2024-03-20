@@ -53,7 +53,7 @@
 										$newPass = sha1($_POST['pass1']);
 
 										if ($passLama == $pass) {
-											$set = mysqli_query($con,"UPDATE tb_guru SET password='$newPass' WHERE id_guru='$data[id_guru]' ");
+											$set = mysqli_query($con,"UPDATE tb_coach SET password='$newPass' WHERE id_coach='$data[id_coach]' ");
 						echo "
 													<script type='text/javascript'>
 													setTimeout(function () { 
@@ -112,7 +112,7 @@
 
       			</center>      		</p>
       		<input type="file" name="foto"> 
-      			<input type="hidden" name="id" value="<?=$data['id_guru'] ?>">       		
+      			<input type="hidden" name="id" value="<?=$data['id_coach'] ?>">       		
       	</div> 
       		<div class="form-group">      
     
@@ -126,7 +126,7 @@
 					$gambar = @$_FILES['foto']['name'];
 					if (!empty($gambar)) {
 					move_uploaded_file($_FILES['foto']['tmp_name'],"../assets/img/user/$gambar");
-					$ganti = mysqli_query($con,"UPDATE tb_guru SET foto='$gambar' WHERE id_guru='$_POST[id]' ");
+					$ganti = mysqli_query($con,"UPDATE tb_coach SET foto='$gambar' WHERE id_coach='$_POST[id]' ");
 					  if ($ganti) {
                             	echo "
 													<script type='text/javascript'>

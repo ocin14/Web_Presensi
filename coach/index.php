@@ -3,7 +3,7 @@
 @session_start();
  include '../config/db.php';
 
-if (!isset($_SESSION['guru'])) {
+if (!isset($_SESSION['coach'])) {
 ?> <script>
     alert('Maaf ! Anda Belum Login !!');
     window.location='../user.php';
@@ -14,9 +14,9 @@ if (!isset($_SESSION['guru'])) {
 
 
    <?php
-$id_login = @$_SESSION['guru'];
-$sql = mysqli_query($con,"SELECT * FROM tb_guru
- WHERE id_guru = '$id_login'") or die(mysqli_error($con));
+$id_login = @$_SESSION['coach'];
+$sql = mysqli_query($con,"SELECT * FROM tb_coach
+ WHERE id_coach = '$id_login'") or die(mysqli_error($con));
 $data = mysqli_fetch_array($sql);
 
 // tampilkan data mengajar
@@ -27,7 +27,7 @@ INNER JOIN tb_mkelas ON tb_mengajar.id_mkelas=tb_mkelas.id_mkelas
 
 INNER JOIN tb_semester ON tb_mengajar.id_semester=tb_semester.id_semester
 INNER JOIN tb_thajaran ON tb_mengajar.id_thajaran=tb_thajaran.id_thajaran
-WHERE tb_mengajar.id_guru='$data[id_guru]' AND tb_thajaran.status=1 ");
+WHERE tb_mengajar.id_coach='$data[id_coach]' AND tb_thajaran.status=1 ");
 
 ?>
 <!DOCTYPE html>
@@ -118,7 +118,7 @@ WHERE tb_mengajar.id_guru='$data[id_guru]' AND tb_thajaran.status=1 ");
 										<div class="user-box">
 											<div class="avatar-lg"><img src="../assets/img/user/<?=$data['foto'] ?>" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4><?=$data['nama_guru'] ?></h4>
+												<h4><?=$data['nama_coach'] ?></h4>
 												<p class="text-muted"><?=$data['email'] ?></p>
 												<a href="?page=jadwal" class="btn btn-xs btn-secondary btn-sm">Jadwal Mengajar</a>
 											</div>
@@ -150,7 +150,7 @@ WHERE tb_mengajar.id_guru='$data[id_guru]' AND tb_thajaran.status=1 ");
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
-									<?=$data['nama_guru'] ?>
+									<?=$data['nama_coach'] ?>
 									<span class="user-level"><?=$data['nip'] ?></span>
 									<span class="caret"></span>
 								</span>

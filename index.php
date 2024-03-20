@@ -62,7 +62,7 @@ include 'config/db.php';
                             <option>Level</option>
                             <option value="1">Member</option>
                             <!-- <option value="2">Siswa</option> -->
-                            <option value="1">Coach</option>
+                            <option value="2">Coach</option>
                             <option value="3">Coach</option>
                             <!-- <option value="4">Wali Kelas</option> -->
                         </select>
@@ -132,51 +132,49 @@ include 'config/db.php';
 						}
 						
 					}elseif ($level==2) {
-						// Siswa
-								$sqlCek = mysqli_query($con,"SELECT * FROM tb_siswa WHERE nis='$_POST[username]' AND password='$pass' AND status='y'");
-								$jml = mysqli_num_rows($sqlCek);
-								$d = mysqli_fetch_array($sqlCek);
-								
-								if ($jml > 0) {
-								$_SESSION['siswa']= $d['id_siswa'];
-								
-								
-								echo "
-								<script type='text/javascript'>
-								setTimeout(function () { 
-								
-								swal('($d[nama_siswa]) ', 'Login berhasil', {
-								icon : 'success',
-								buttons: {        			
-								confirm: {
-								className : 'btn btn-success'
-								}
-								},
-								});    
-								},10);  
-								window.setTimeout(function(){ 
-								window.location.replace('./siswa/');
-								} ,3000);   
-								</script>";
-								
-								}else{
-								echo "
-								<script type='text/javascript'>
-								setTimeout(function () { 
-								
-								swal('Sorry!', 'Username / Password Salah', {
-								icon : 'error',
-								buttons: {        			
-								confirm: {
-								className : 'btn btn-danger'
-								}
-								},
-								});    
-								},10);  
-								window.setTimeout(function(){ 
-								window.location.replace('./');
-								} ,3000);   
-								</script>";
+						// Coach
+						$sqlCek = mysqli_query($con,"SELECT * FROM tb_coach WHERE nip='$_POST[username]' AND password='$pass' AND status='i'");
+						$jml = mysqli_num_rows($sqlCek);
+						$d = mysqli_fetch_array($sqlCek);
+						
+						if ($jml > 0) {
+						$_SESSION['coach']= $d['id_coach'];
+						echo "
+						<script type='text/javascript'>
+						setTimeout(function () { 
+						
+						swal('($d[nama_coach]) ', 'Login berhasil', {
+						icon : 'success',
+						buttons: {        			
+						confirm: {
+						className : 'btn btn-success'
+						}
+						},
+						});    
+						},10);  
+						window.setTimeout(function(){ 
+						window.location.replace('./coach/');
+						} ,3000);   
+						</script>";					
+						
+						}else{
+						echo "
+						<script type='text/javascript'>
+						setTimeout(function () { 
+						
+						swal('Sorry!', 'Username / Password Salah', {
+						icon : 'error',
+						buttons: {        			
+						confirm: {
+						className : 'btn btn-danger'
+						}
+						},
+						});    
+						},10);  
+						window.setTimeout(function(){ 
+						window.location.replace('./');
+						} ,3000);   
+						</script>";
 								}
 
 								
