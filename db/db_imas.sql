@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Mar 2024 pada 13.48
+-- Waktu pembuatan: 21 Mar 2024 pada 13.55
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -64,7 +64,7 @@ CREATE TABLE `tb_coach` (
 --
 
 INSERT INTO `tb_coach` (`id_coach`, `nip`, `nama_coach`, `email`, `password`, `foto`, `status`) VALUES
-(1, '001', 'Coach', 'Coach@gmail.com', 'e193a01ecf8d30ad0affefd332ce934e32ffce72', '', 'i');
+(1, '001', 'Coach', 'Coach@gmail.com', 'e193a01ecf8d30ad0affefd332ce934e32ffce72', '', 'y');
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ CREATE TABLE `tb_guru` (
 --
 
 INSERT INTO `tb_guru` (`id_guru`, `nip`, `nama_guru`, `email`, `password`, `foto`, `status`) VALUES
-(5, '001', 'Fatmawati S.Pd', 'fatmawati@gmail.com', 'e193a01ecf8d30a', 'guru.png', 'Y'),
+(5, '001', 'Fatmawati S.Pd', 'fatmawati@gmail.com', 'e193a01ecf8d30ad0affefd332ce934e32ffce72', 'guru.png', 'Y'),
 (6, '002', 'Rahayu S.Pd', 'rahayu@gmail.com', '6fc978af728d43c59faa400d5f6e0471ac850d4c', '17603.png', 'Y'),
 (7, '003', 'Jaka Subadri S.Pd', 'jakasubadri@gmail.com', '221407c03ae5c73109cce71d27e24637824f3333', '355-3553881_stockvader-predicted-adig-user-profile-icon-png-clipart.jpg', 'Y'),
 (8, '004', 'Tiwi Sukmawati S.Pd', 'tiwisukmawati@gmail.com', 'c63528a52274a35d1c07bd9e55a83c6eb073de81', '17603.png', 'Y');
@@ -157,20 +157,22 @@ CREATE TABLE `tb_mengajar` (
   `id_mapel` int(11) NOT NULL,
   `id_mkelas` int(11) NOT NULL,
   `id_semester` int(11) NOT NULL,
-  `id_thajaran` int(11) NOT NULL
+  `id_thajaran` int(11) NOT NULL,
+  `id_coach` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data untuk tabel `tb_mengajar`
 --
 
-INSERT INTO `tb_mengajar` (`id_mengajar`, `kode_pelajaran`, `hari`, `jam_mengajar`, `jamke`, `id_guru`, `id_mapel`, `id_mkelas`, `id_semester`, `id_thajaran`) VALUES
-(1, 'MPL-1614670924', 'Senin', '09.00-10.00', '1-2', 1, 1, 1, 1, 2),
-(2, 'MPL-1614674537', 'Senin', '09.00-10.00', '1-2', 5, 1, 1, 1, 2),
-(4, 'MPL-1615004563', 'Senin', '08.00-09.00', '1', 6, 2, 3, 2, 2),
-(5, 'MPL-1616288498', 'Rabu', '09.00-10.00', '2', 8, 7, 1, 2, 2),
-(6, 'MPL-1582242668', 'Senin', '08.00-09.00', '1', 5, 1, 1, 4, 8),
-(7, 'MPL-1616673172', 'Senin', '08.00-09.00', '1', 5, 1, 5, 4, 8);
+INSERT INTO `tb_mengajar` (`id_mengajar`, `kode_pelajaran`, `hari`, `jam_mengajar`, `jamke`, `id_guru`, `id_mapel`, `id_mkelas`, `id_semester`, `id_thajaran`, `id_coach`) VALUES
+(1, 'MPL-1614670924', 'Senin', '09.00-10.00', '1-2', 1, 1, 1, 1, 2, 1),
+(2, 'MPL-1614674537', 'Senin', '09.00-10.00', '1-2', 5, 1, 1, 1, 2, 0),
+(4, 'MPL-1615004563', 'Senin', '08.00-09.00', '1', 6, 2, 3, 2, 2, 0),
+(5, 'MPL-1616288498', 'Rabu', '09.00-10.00', '2', 8, 7, 1, 2, 2, 0),
+(6, 'MPL-1582242668', 'Senin', '08.00-09.00', '1', 5, 1, 1, 4, 8, 0),
+(7, 'MPL-1616673172', 'Senin', '08.00-09.00', '1', 5, 1, 5, 4, 8, 0),
+(8, 'MP-1615002340', 'Senin', '09.00-10.00', '1-2', 1, 1, 1, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -324,7 +326,8 @@ INSERT INTO `_logabsensi` (`id_presensi`, `id_mengajar`, `id_siswa`, `tgl_absen`
 (14, 6, 4, '2021-03-25', 'I', '2'),
 (15, 7, 5, '2024-03-13', 'H', '1'),
 (16, 7, 5, '2024-03-19', 'H', '2'),
-(17, 7, 5, '2024-03-20', 'H', '3');
+(17, 7, 5, '2024-03-20', 'H', '3'),
+(18, 8, 1, '2024-03-21', 'H', '3');
 
 --
 -- Indexes for dumped tables
@@ -366,7 +369,8 @@ ALTER TABLE `tb_master_mapel`
 ALTER TABLE `tb_mengajar`
   ADD PRIMARY KEY (`id_mengajar`),
   ADD KEY `id_mapel` (`id_mapel`),
-  ADD KEY `id_guru` (`id_guru`);
+  ADD KEY `id_guru` (`id_guru`),
+  ADD KEY `id_coach` (`id_coach`);
 
 --
 -- Indeks untuk tabel `tb_mkelas`
@@ -443,7 +447,7 @@ ALTER TABLE `tb_master_mapel`
 -- AUTO_INCREMENT untuk tabel `tb_mengajar`
 --
 ALTER TABLE `tb_mengajar`
-  MODIFY `id_mengajar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_mengajar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_mkelas`
@@ -479,7 +483,7 @@ ALTER TABLE `tb_walikelas`
 -- AUTO_INCREMENT untuk tabel `_logabsensi`
 --
 ALTER TABLE `_logabsensi`
-  MODIFY `id_presensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_presensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -133,7 +133,7 @@ include 'config/db.php';
 						
 					}elseif ($level==2) {
 						// Coach
-						$sqlCek = mysqli_query($con,"SELECT * FROM tb_coach WHERE nip='$_POST[username]' AND password='$pass' AND status='i'");
+						$sqlCek = mysqli_query($con,"SELECT * FROM tb_coach WHERE nip='$_POST[username]' AND password='$pass' AND status='y'");
 						$jml = mysqli_num_rows($sqlCek);
 						$d = mysqli_fetch_array($sqlCek);
 						

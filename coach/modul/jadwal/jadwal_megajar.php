@@ -1,6 +1,5 @@
 
 <div class="page-inner">
-
 	<div class="page-header">
 <h4 class="page-title">Jadwal</h4> 
 <ul class="breadcrumbs">
