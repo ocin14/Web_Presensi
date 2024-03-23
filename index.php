@@ -63,7 +63,6 @@ include 'config/db.php';
                             <option value="1">Member</option>
                             <!-- <option value="2">Siswa</option> -->
                             <option value="2">Coach</option>
-                            <option value="3">Coach</option>
                             <!-- <option value="4">Wali Kelas</option> -->
                         </select>
                     </div>
